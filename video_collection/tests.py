@@ -153,7 +153,7 @@ class TestVideoList(TestCase):
         response = self.client.get(url)
 
         self.assertContains(response, '1 video')
-        # self.assertNotContains(response, '1 videos')
+        self.assertNotContains(response, '1 videos')
 
     def test_video_number_message_two_videos(self):
         v1 = Video.objects.create(name='ZXY', notes='example1', url='https://www.youtube.com/watch?v=123')
@@ -209,7 +209,6 @@ class TestVideoModel(TestCase):
 
         database_videos = Video.objects.all()
         self.assertCountEqual(expected_videos, database_videos) # check contents of two lists/iterables but order does not matter
-
 
     def test_invalid_url_raises_validation_error(self):
         invalid_video_urls = [
