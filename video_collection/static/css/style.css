@@ -1,0 +1,12 @@
+body {
+    background-color: lightblue; */
+}
+
+.navigation {
+    margin: 10px;
+}
+
+.navigation > a {
+    color: darkmagenta;
+    padding-right: 30px;
+}
