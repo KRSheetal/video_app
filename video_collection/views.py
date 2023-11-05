@@ -28,8 +28,8 @@ def add(request): # link 'add' form here
                 messages.warning(request, 'You already added that one')
         
         # if video is not saved, this message will be displayed
-        messages.warning(request, 'Place check the data entered.')
-        return render(request, 'video_collection/add.html',{'new_video_form': new_video_form}) # redisplay the same page with user enetred data
+        messages.warning(request, 'Please check the data entered')
+        return render(request, 'video_collection/add.html', {'new_video_form': new_video_form}) # redisplay the same page with user enetred data
     
     new_video_form = VideoForm()
     return render(request, 'video_collection/add.html',{'new_video_form': new_video_form})

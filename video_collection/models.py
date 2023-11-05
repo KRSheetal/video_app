@@ -12,11 +12,21 @@ class Video(models.Model):
     video_id = models.CharField(max_length=40, unique=True) # display video's frame. max_lenght and unique to avoid duplicate videos
 
     def save(self, *args, **kwargs):
-        # extract video ID form youtube url
-        if not self.url.startswith('https://www.youtube.com/watch'): # checks is the url is a youtube url
-            raise ValidationError(f'Not a YouTuve URL {self.url}')        
+        # extract video ID from youtube url
+        # if not self.url.startswith('https://www.youtube.com/watch'): # checks is the url is a youtube url
+        #     raise ValidationError(f'Not a YouTube URL {self.url}')        
 
+# split the url to pieces to validate
         url_components = parse.urlparse(self.url)  
+
+        if url_components.scheme != 'https':
+            raise ValidationError(f'Not a YouTube URL {self.url}')
+        
+        if url_components.netloc != 'www.youtube.com':
+            raise ValidationError(f'Not a YouTube URL {self.url}')
+        
+        if url_components.netloc != '/watch':
+            raise ValidationError(f'Not a YouTube URL {self.url}')
 
         query_string = url_components.query
         if not query_string:
