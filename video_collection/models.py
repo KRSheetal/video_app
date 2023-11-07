@@ -29,6 +29,7 @@ class Video(models.Model):
             raise ValidationError(f'Not a YouTube URL {self.url}')
 
         query_string = url_components.query
+        
         if not query_string:
             raise ValidationError(f'Invalid YouTube URL {self.url}')
         parameters = parse.parse_qs(query_string, strict_parsing=True)

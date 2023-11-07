@@ -162,6 +162,7 @@ class TestVideoList(TestCase):
         response = self.client.get(url)
 
         self.assertContains(response, '2 videos')
+        self.assertNotContains(response, '2 video')
 
 
 class TestVideoSearch(TestCase):
