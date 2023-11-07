@@ -25,7 +25,7 @@ def add(request): # link 'add' form here
             except ValidationError:
                 messages.warning(request, 'Invalid YouTube URL')
             except IntegrityError:
-                messages.warning(request, 'You already added that one')
+                messages.warning(request, 'You already added that video')
         
         # if video is not saved, this message will be displayed
         messages.warning(request, 'Please check the data entered')

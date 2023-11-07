@@ -25,7 +25,7 @@ class Video(models.Model):
         if url_components.netloc != 'www.youtube.com':
             raise ValidationError(f'Not a YouTube URL {self.url}')
         
-        if url_components.netloc != '/watch':
+        if url_components.path != '/watch':
             raise ValidationError(f'Not a YouTube URL {self.url}')
 
         query_string = url_components.query
